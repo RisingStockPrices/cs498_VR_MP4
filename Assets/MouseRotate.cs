@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseRotate : MonoBehaviour
 {
-    public float mouseSens = 100f;
+    public float mouseSens = 50f;
     public Transform playerT;
 
     float xRot = 0f;
@@ -23,9 +23,14 @@ public class MouseRotate : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 
         xRot -= mouseY;
-        xRot = Mathf.Clamp(xRot, -90f, 90f);
+        xRot = Mathf.Clamp(xRot, -45f, 45f);
 
-        transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
-        playerT.Rotate(Vector3.up * mouseX);
+        if (xRot < 30f && xRot > -30f)
+            playerT.Rotate(Vector3.left * mouseY);
+        //mouseY = Mathf.Clamp(mouseY, -45f, 45f);
+        //transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+        //playerT.Rotate(Vector3.forward * xRot);
+        playerT.Rotate(Vector3.up*mouseX);
+
     }
 }
