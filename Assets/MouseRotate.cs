@@ -12,7 +12,7 @@ public class MouseRotate : MonoBehaviour
     void Start()
     {
 
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once per frame

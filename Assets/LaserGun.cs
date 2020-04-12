@@ -9,7 +9,8 @@ public class LaserGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        print("heyya");
+       Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once per frame
@@ -23,6 +24,8 @@ public class LaserGun : MonoBehaviour
 
         xRot -= mouseY;
         yRot += mouseX;
+        xRot = Mathf.Clamp(xRot, -35f, 5f);
+        yRot = Mathf.Clamp(yRot, -45f, 45f);
         transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
         //transform.Rotate(Vector3.up * mouseX);
         //transform.Rotate(Vector3.left*mouseY);// = Quaternion.Euler(0, mouseX, 0);
