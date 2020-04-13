@@ -8,11 +8,13 @@ public class AimShoot : MonoBehaviour
     public float range = 100f;
     public ParticleSystem leftGun;
     public ParticleSystem rightGun;
+   
     public GameObject gameManager;
+    AudioSource laserSound;
     // Start is called before the first frame update
     void Start()
     {
-        
+        laserSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,19 +27,21 @@ public class AimShoot : MonoBehaviour
     }
     void Shoot()
     {
-        leftGun.Play();
-        rightGun.Play();
+        
         RaycastHit hit;
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range) && Time.timeScale==1)
         {
-            Debug.Log(hit.transform.name);
+            leftGun.Play();
+            rightGun.Play();
+            laserSound.Play();
+           // Debug.Log(hit.transform.name);
             TargetObj target = hit.transform.GetComponent<TargetObj>();
             if(target!=null)
             {
                 target.Hit();
             }
 
-            gameManager.GetComponent<GameManager>().incrementScore();
+            gameManager.GetComponent<Gamemanager>().incrementScore();
                // target.Hit();
         }
         

@@ -25,10 +25,10 @@ public class MouseRotate : MonoBehaviour
         xRot -= mouseY;
         xRot = Mathf.Clamp(xRot, -45f, 45f);
 
-        if (xRot < 30f && xRot > -30f)
-            playerT.Rotate(Vector3.left * mouseY);
+        //if (xRot < 30f && xRot > -30f)
+            //playerT.Rotate(Vector3.left * mouseY);
         //mouseY = Mathf.Clamp(mouseY, -45f, 45f);
-        //transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+       transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         //playerT.Rotate(Vector3.forward * xRot);
         playerT.Rotate(Vector3.up*mouseX);
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FalconMovement : MonoBehaviour
 {
     CharacterController controller;
+    public GameObject gManager;
     public float speed = 200f;
     public float minSpeed = 100f;
     public float maxSpeed = 300f;
@@ -21,9 +22,9 @@ public class FalconMovement : MonoBehaviour
     void Update()
     {
         float accel = Input.GetAxis("Vertical");
-        float yaw = Input.GetAxis("Horizontal");
+        float yaw = Input.GetAxis("Fire2");
         float pitch = Input.GetAxis("Fire1"); // x axis, controls: TG
-        float roll = Input.GetAxis("Fire2"); // z axis, controls : HF
+        float roll = Input.GetAxis("Horizontal"); // z axis, controls : HF
 
         //Vector3 rot = transform.forward * roll + transform.up * yaw + transform.right * pitch;
         Vector3 rot = Vector3.back * roll + Vector3.up * yaw + Vector3.left * pitch;
@@ -41,5 +42,11 @@ public class FalconMovement : MonoBehaviour
         controller.Move(translate);
 
         speed = befBoostSpeed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        gManager.GetComponent<Gamemanager>().gameOver();
+        print("collision!");
     }
 }

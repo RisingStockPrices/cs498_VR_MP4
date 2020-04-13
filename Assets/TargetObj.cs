@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class TargetObj : MonoBehaviour
 {
+    AudioSource explosionSFX;
+    
+    private void Start()
+    {
+        explosionSFX = GetComponent<AudioSource>();
+    }
     public void tempKill()
     {
         gameObject.SetActive(false);
+        explosionSFX.Play();
         Invoke("Resurrect", 5);
     }
     public void Hit()

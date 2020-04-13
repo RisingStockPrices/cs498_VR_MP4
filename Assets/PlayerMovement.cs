@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    float speed = 5f;
+    CharacterController controller;
+    float speed = 4f;
     bool isMoving = false;
     Animator anim;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
     }
     // Update is called once per frame
     void Update()
