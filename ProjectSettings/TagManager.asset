@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StartGame
   - EndGame
+  - Tutorial
   layers:
   - Default
   - TransparentFX

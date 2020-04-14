@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject gameM;
     CharacterController controller;
-    float speed = 4f;
+    float speed = 2.5f;
     bool isMoving = false;
     Animator anim;
 
@@ -41,12 +42,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag=="StartGame")
         {//jump to game scene
+
+            gameM.GetComponent<Gamemanager>().setTutorial(false);
             SceneManager.LoadScene(sceneName: "CS498HW4");
         }
         else if(collision.gameObject.tag=="EndGame")
         {
             print("attempting to quit");
             Application.Quit();
+        }
+        else if(collision.gameObject.tag=="Tutorial")
+        {
+            gameM.GetComponent<Gamemanager>().setTutorial(true);
+            SceneManager.LoadScene(sceneName: "CS498HW4");
         }
     }
 }

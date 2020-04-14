@@ -12,8 +12,8 @@ public class TargetObj : MonoBehaviour
     }
     public void tempKill()
     {
-        gameObject.SetActive(false);
         explosionSFX.Play();
+        gameObject.SetActive(false);
         Invoke("Resurrect", 5);
     }
     public void Hit()
